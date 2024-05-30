@@ -1,0 +1,606 @@
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+
+*{
+  margin: 0;
+  padding: 0;
+  outline: none;
+  border: none;
+  text-decoration: none;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+body{
+  background: rgb(226, 226, 226);
+  font-family: "Quicksand", sans-serif !important;
+}
+
+.choose-page nav{
+    width: 50px;
+    position: sticky;
+    top: 0;
+    bottom: 0;
+    height: 100vh;
+    left: 0;
+    /* width: 80px; */
+    /* background: #fff; */
+    overflow: hidden;
+    transition: 1s;
+
+  }
+
+
+/*   
+ nav {
+  position: sticky;
+  top: 0;
+  bottom: 0;
+  height: 100vh;
+  left: 0;
+  width: 80px;
+  background: #fff;
+  overflow: hidden;
+  transition: 1s;
+} */
+
+
+
+.choose-page nav:hover{
+  width: 280px;
+  transition: 1s;
+}
+
+.choose-page nav:hover{
+    width: 220px;
+    transition: 1s;
+  }
+.logo{
+  text-align: center;
+  display: flex;
+  padding-bottom: 3rem;
+  padding-top: 2rem;
+  /* padding-left: 1rem; */
+}
+
+.logo img{
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+
+}
+
+.choose-page .logo img{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-left: 5px;
+  
+  }
+.logo span{
+  font-weight: bold;
+  padding-left: 15px;
+  font-size: 18px;
+  text-transform: uppercase;
+  color: white; 
+}
+
+/* a{
+  position: relative;
+  width: 280px;
+  font-size: 14px;
+  color: rgb(85, 83, 83);
+  display: table;
+  padding: 10px;
+} */
+
+
+
+.choose-page a{
+    padding-left: 0px;
+    position: relative;
+    width: 280px;
+    font-size: 14px;
+    color: rgb(85, 83, 83);
+    /* display: table; */
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+
+nav .fas{
+  position: relative;
+  width: 70px;
+  height: 40px;
+  top: 20px;
+  font-size: 20px;
+  text-align: center;
+}
+.nav-item{
+  position: relative;
+  top: 5px;
+  margin-left: 20px;
+}
+.choose-page a:hover{
+  background:  #854a51;
+
+  
+}
+/* .choose-page .nav-item{
+
+} */
+
+/* .choose-page:hover{
+    width: 220px ;
+  
+    
+  } */
+
+
+
+a:hover i{
+  color: #34AF6D;
+  transition: 0.5s;
+}
+.logout{
+  position: absolute;
+  bottom: 0;
+}
+
+.container{
+  display: flex;
+}
+
+/* MAin Section */
+.main{
+  position:relative;
+  padding: 20px;
+  width: 100%;
+}
+.main-top{
+  display: flex;
+  width: 100%;
+}
+.main-top i{
+  position: absolute;
+  right: 0;
+  margin: 10px 30px;
+  color: rgb(110, 109, 109);
+  cursor: pointer;
+}
+.main .users{
+  display: flex;
+  width: 100%;
+}
+.users .card{
+  width: 25%;
+  margin: 10px;
+  background: #fff;
+  text-align: center;
+  border-radius: 10px;
+  padding: 10px;
+  box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
+}
+.users .card img{
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+}
+.users .card h4{
+  text-transform: uppercase;
+}
+.users .card p{
+  font-size: 12px;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+}
+.users table{
+  margin:  auto;
+}
+.users .per span{
+  padding: 5px;
+  border-radius: 10px;
+  background: rgb(223, 223, 223);
+}
+.users td{
+  font-size: 14px;
+  padding-right: 15px;
+}
+.users .card button{
+  width: 100%;
+  margin-top: 8px;
+  padding: 7px;
+  cursor: pointer;
+  border-radius: 10px;
+  background: transparent;
+  border: 1px solid #4AD489;
+}
+.users .card button:hover{
+  background: #4AD489;
+  color: #fff;
+  transition: 0.5s;
+}
+
+/*Attendance List serction  */
+.attendance{
+  /* margin-top: 50px; */
+  text-transform: capitalize;
+    /* max-height: 50%; */
+  /* height: 70%; */
+      max-height: 75vh;
+  overflow: auto;
+    margin: 5px 0;
+}
+
+
+.attendance::-webkit-scrollbar{
+    width: 0.5rem;
+    height: 0.5rem;
+}
+
+.attendance::-webkit-scrollbar-thumb{
+    visibility: hidden;
+    border-radius: 0.5rem;
+    background-color: #0004;
+}
+.attendance:hover::-webkit-scrollbar-thumb{
+    visibility: visible;
+}
+
+
+
+
+
+
+
+.attendance-list{
+  width: 100%;
+  /* padding: 10px; */
+  /* margin-top: 10px; */
+  /* background: #fff; */
+  /* border-radius: 10px;
+  box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1); */
+}
+.table{
+  border-collapse: collapse;
+  /* margin: 5px 0; */
+  font-size: 15px;
+  min-width: 100%;
+
+  /* overflow: hidden;  */
+  border-radius: 5px 5px 0 0;
+}
+
+.table th,
+.table td{
+  padding: 12px 15px;
+  border-collapse: collapse;
+}
+.table tbody tr{
+  border-bottom: 1px solid #ddd;
+}
+.table tbody tr:nth-of-type(odd){
+  background: #f3f3f3;
+}
+.table tbody tr.active{
+  font-weight: bold;
+  color: #4AD489;
+}
+.table tbody tr:last-of-type{
+  border-bottom: 2px solid #4AD489;
+}
+.table button{
+  padding: 6px 20px;
+  border-radius: 10px;
+  cursor: pointer;
+  background: transparent;
+  border: 1px solid #4AD489;
+}
+.table button:hover{
+  background: #4AD489;
+  color: #fff;
+  transition: 0.5rem;
+}
+  ul {
+    list-style-type: none; /* Removes bullet points */
+    padding: 0; /* Removes padding */
+    margin: 0; /* Removes margin */
+  }
+  li {
+    margin: 0; /* Optional: Removes margin for list items */
+  }
+
+  nav {
+    background-color: #643137;
+  }
+  .icon{
+    text-align: center;
+    display: flex;
+    margin: 30px 0 10px 10px;
+  }
+  
+  .icon img{
+    width: 30px;
+    height: 30px;
+  }
+
+  .choose-page .icon img{
+    width: 25px;
+    height: 25px;
+  }
+
+  .icon span{
+    padding-left: 20px;
+    color: white; /* Change text color to white */
+  }
+
+  .choose-section button{
+    padding: 6px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    background: transparent;
+    border: 1px solid  #643137;
+  }
+  .choose-section button:hover{
+    background:  #643137;
+    color: #fff;
+    transition: 0.5rem;
+
+  }
+
+  .choose-section span{
+    padding: 7px 100px;
+    border-radius: 10px;
+    background:  #643137;
+    color: #fff;
+
+  }
+
+  .choose-section {
+    display: flex;
+    justify-content:center;
+    /* align-items: center; */
+}
+.choose-section button,
+.choose-section span {
+    margin: 0 2px; /* Adjust the margin to 2px */
+}
+
+
+.attendance-list table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.attendance-list th,
+.attendance-list td {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+.attendance-list tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.attendance-list td:hover {
+    background-color:#b9b6b9;
+    color: white;
+}
+.header{
+    display: flex;
+    justify-content:center;
+    padding: 8px;
+  }
+
+.center-header span{
+    display: flex;
+    justify-content:center;
+    padding: 8px;
+  }
+
+
+  .row{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /* margin-bottom: 1.3rem; */
+    margin: 30px 0 10px 20px;
+  }
+  .row h2{
+    font-size: 20px;
+
+  }
+
+  .row a{
+    font-size: 12px;
+    text-decoration: none;
+
+
+  }
+  .review{
+    width: 70%;
+    padding: 10px;
+    background: #fff;
+    border-radius: 10px;
+    /* margin-bottom: 12px; */
+    margin: 0 0 0 5px;
+  }
+  .review .details{
+    display: flex;
+  }
+  .details .logo img{
+    height: 40px;
+    width: 40px;
+    border-radius: 10px;
+    margin-right: 10px;
+  }
+  .details .title{
+    display: flex;
+    flex-direction: column;
+  }
+  .details .title h2{
+    font-size: 14px;
+    /* line-height: 18px; */
+    /* margin-bottom: 4px; */
+  }
+  .details .title span{
+    font-size: 11px;
+    color: rgb(96, 96, 96);
+  }
+  .review_post{
+    margin-top: 1px;
+  }
+  .review_post p{
+    font-size: 11px;
+    word-spacing: 3px;
+    color: rgb(119, 119, 119);
+  }
+
+  .shift-users{
+    position: sticky;
+    top: 0;
+    bottom: 0;
+    height: 100vh;
+    left: 0px;
+    width: 10px;
+    background: rgb(53, 53, 53);
+    overflow: hidden;
+    transition: 1s;
+    padding: 15px;
+
+  }
+  .users-hed{
+    margin: 30px 0 10px 20px; 
+    color: white;
+  }
+
+  .users-hed h3{
+    font-size: 15px;
+  }
+
+  .shift-users .review:hover{
+    background: rgb(96, 96, 96);
+    color:white;
+
+  }
+.td-person{
+    display: flex;
+    justify-content:center;
+}
+  .td-person img{
+    width: 30px;
+    height: 30px;
+    margin: 5px; 
+  }
+  .td-person span{
+    /* position: relative; */
+    top: 5px;
+    margin-top: 7px;
+    margin-left: 2px;
+    /* margin: 5px;  */
+  }
+
+  thead th {
+    position: sticky;
+    top: 0;
+    left: 0;
+    cursor: pointer;
+    text-transform: capitalize;
+    background-color:  #643137;
+    text-align: left;
+    font-weight: bold;
+    color: #fff;
+    /* border-radius: .6rem; */
+}
+
+/* table thead tr{
+    color: #fff;
+    background:  #643137;
+    position: sticky;
+    text-align: left;
+    font-weight: bold;
+  } */
+
+.Font-big {
+    font-size: 32px; /* You can adjust the font size as needed */
+    font-weight: normal; /* Remove bold style */
+}
+.Font-small {
+    font-size: 12px; /* You can adjust the font size as needed */
+    font-weight: normal; /* Remove bold style */
+}
+
+.dropdown-menu{
+  position:absolute;
+  /* margin-left: 40px; */
+  background-color:#643137;
+  border-radius: 5px;
+  color: #fff;
+}
+
+.dropdown-option{
+  position: relative;
+  /* display: inline-block;
+  width: 70%; */
+  /* padding: 10px;
+ */
+ padding-left: 10px;
+ padding-right: 10px;
+
+}
+
+.dropdown-option:hover {
+  background-color:#854a51;
+}
+
+
+
+
+
+
+  /*addeddddd */
+/* .custom-dropdown {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+
+.td-person {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.td-person img {
+  margin-left: 8px;
+}
+
+.dropdown-menu {
+  position: absolute;
+  background-color: white;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+  z-index: 1;
+  width: 100%;
+}
+
+.dropdown-option {
+  padding: 8px;
+  cursor: pointer;
+}
+
+.dropdown-option:hover {
+  background-color:#854a51;
+}
+
+.dropdown-option .td-person {
+  display: flex;
+  align-items: center;
+}
+
+.dropdown-option .td-person span {
+  margin-left: 8px;
+}
+
+.clickable-td {
+  cursor: pointer;
+} */
