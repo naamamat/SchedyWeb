@@ -2,6 +2,7 @@ import React from 'react';
 import Navbar from './navbarLogin.js';
 import LoginForm from './loginForm.js';
 import RegisterForm from './registerForm.js';
+import logoS from '../pic/logo-no-background.png';
 import Nav from './navbar.js';
 // import './App.css';
 
@@ -31,10 +32,16 @@ function Register() {
     <div>
     <div className="wrapper">
       <Navbar login={login} register={register} />
-      <div className="form-box">
-        <LoginForm />
-        <RegisterForm />
+      <div class="left-background">
+      <img src={logoS}/>
       </div>
+      <div class="right-background">
+        <div className="form-box">
+          <LoginForm />
+          <RegisterForm />
+        </div>
+      </div>
+
     </div>
       
     </div>

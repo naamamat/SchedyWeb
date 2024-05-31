@@ -16,11 +16,14 @@ body{
 }
 
 .wrapper{
-    display: flex;
+    /* display: flex;
     justify-content: center;
     align-items: center;
     min-height: 110vh;
-    background: rgb(68, 64, 64);
+    background: rgb(68, 64, 64); */
+    margin: 0;
+    display: flex;
+    height: 100vh;
 }
 .nav{
     position: fixed;
@@ -111,7 +114,7 @@ body{
 }
 .top span{
     color: #fff;
-    font-size: small;
+    font-size: medium;
     padding: 10px 0;
     display: flex;
     justify-content: center;
@@ -123,7 +126,7 @@ body{
 }
 header{
     color:  #ffffff;
-    font-size: 35px;
+    font-size: 45px;
     text-align: center;
     padding: 10px 0 10px 0;
 }
@@ -132,7 +135,7 @@ header{
     gap: 10px;
 }
 .input-field{
-    font-size: 15px;
+    font-size: 17px;
     background: rgba(255, 255, 255, 0.2);
     color: #fff;
     height: 50px;
@@ -150,14 +153,14 @@ header{
     color: #fff;
 }
 .input-box{
-    margin-bottom: 5px;
+    margin-bottom: 15px;
     position: relative;
     /* top: -35px;
     left: 17px; */
     color: #fff;
 }
 .submit{
-    font-size: 15px;
+    font-size: 17px;
     font-weight: 500;
     color: black;
     height: 45px;
@@ -177,7 +180,7 @@ header{
     display: flex;
     justify-content: space-between;
     color: #fff;
-    font-size: small;
+    font-size: medium;
     margin-top: 10px;
 }
 .two-col .one{
@@ -311,6 +314,34 @@ header{
     cursor: pointer;
     display: none;
 }
+
+
+.left-background {
+    background-color: #643137;
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.right-background {
+    background-color: rgb(68, 64, 64);
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.left-background img{
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin: 2.5vw;
+    width: 15vw;
+    
+}
+
+
 
 
 
