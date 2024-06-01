@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import '../styles/profile.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
+// import 'bootstrap/dist/css/bootstrap.min.css';
 
 const ProfileSettings = () => {
     const [ask, setAsk] = useState('I want to change ...... to ......');

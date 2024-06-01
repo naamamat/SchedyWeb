@@ -21,7 +21,10 @@ function Navbar() {
         navigate('/shift');
       };
       const handleProfileClick = () => {
-        navigate('/profile')
+        navigate('/manageProfile')
+      }
+      const handleFileUploadClick = () => {
+        navigate('/FileUpload')
       }
 
 
@@ -38,7 +41,7 @@ function Navbar() {
           <li>
             <a href="#" className="icon">
               <img src={profile} alt="Watch Profile" />
-              <span className="nav-item" onClick={handleProfileClick}>My profile</span>
+              <span className="nav-item" onClick={handleFileUploadClick}>My profile</span>
             </a>
           </li>
           <li>

@@ -8,13 +8,15 @@
 }
 
 :root {
-	--blue: #0071FF;
-	--light-blue: #B6DBF6;
+	--blue:  #643137;
+	--light-blue:  rgb(226, 226, 226);
 	--dark-blue: #005DD1;
 	--grey: #f2f2f2;
 }
 
-body {
+.upload {
+	width: 100vw;
+	height: 100vh;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -23,7 +25,7 @@ body {
 }
 
 
-.container {
+.containerUpload {
 	max-width: 400px;
 	width: 100%;
 	background: #fff;
@@ -118,6 +120,7 @@ body {
 .select-image:hover {
 	background: var(--dark-blue);
 }
-.container:first-child {
+.containerUpload:first-child {
 	margin-right: 20px; /* Adjust the value as needed */
 }
+

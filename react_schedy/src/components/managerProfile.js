@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
-import '../styles/profile.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import Navbar from './navbar';
+//  
+// import 'bootstrap/dist/css/bootstrap.min.css';
 
 const ManagerProfile = () => {
     const [ask, setAsk] = useState();
 
     return (
         <div className="container light-style flex-grow-1 container-p-y">
+            <Navbar></Navbar>
         <h4 className="font-weight-bold py-3 mb-4">
             Account settings
         </h4>

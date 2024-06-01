@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import '../styles/uploadfiles.css';
-import myImage from './pics/upload.jpg';
+import myImage from '../pic/upload.png';
+import Navbar from "./navbar";
+import DownloadButtons from './downloadButtons';
 function FileUpload (){
     const [file, setFile]=useState()
 
@@ -28,17 +30,27 @@ function FileUpload (){
         
     }
     return (
-        <div class="container">
+    <div class="container">
+        <Navbar></Navbar>
+    <div class ="upload">
+        
+        <div class="containerUpload">
+            
             <div >
                 <div><h3> Workers </h3></div>
+                {/* <DownloadButtons></DownloadButtons> */}
                 <div class="file-area" data-img=""><img src={myImage} alt="My Image" /></div>
                 <input class="select-workers" type="file" name="file" onChange={handleFile} />
                 <br></br>
             </div>
             <form onSubmit={handleUpload}>
                 <button class="select-workers">Upload</button>
+
             </form>
         </div>
+    </div>
+    </div>
+       
     )
 }
 
