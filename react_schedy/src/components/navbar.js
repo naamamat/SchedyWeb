@@ -20,6 +20,10 @@ function Navbar() {
       const handleShiftClick = () => {
         navigate('/shift');
       };
+      const handleProfileClick = () => {
+        navigate('/profile')
+      }
+
 
   return (
     <div className="choose-page">
@@ -28,13 +32,13 @@ function Navbar() {
           <li>
             <a href="#" className="logo">
               <img src={picProfile} alt="Profile" />
-              <span className="nav-item">Admin</span>
+              <span className="nav-item" onClick={handleProfileClick}>Admin</span>
             </a>
           </li>
           <li>
             <a href="#" className="icon">
               <img src={profile} alt="Watch Profile" />
-              <span className="nav-item">My profile</span>
+              <span className="nav-item" onClick={handleProfileClick}>My profile</span>
             </a>
           </li>
           <li>
