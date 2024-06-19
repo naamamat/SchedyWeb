@@ -1,0 +1,4 @@
+shift_index,worker_id,worker_name,skill,day,start_hour,end_hour,number_of_workers,cost_per_worker
+0,2,Worker2,skill1,Monday,09:00,17:00,2,100
+1,1,Worker1,skill2,Monday,09:00,17:00,1,120
+2,3,Worker3,skill1,Tuesday,09:00,17:00,2,100
