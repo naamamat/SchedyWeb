@@ -1,4 +1,4 @@
-import React from 'react';
+import React  from 'react';
 import '../styles/styleShift.css';
 import picProfile from '../pic/picProfile.png';
 import picCalendar from '../pic/calendar.png';
@@ -6,67 +6,61 @@ import picUpload from '../pic/upload.png';
 import picGroup from '../pic/group.png';
 import profile from '../pic/profile.png';
 import picLogout from '../pic/logout.png';
-import { useNavigate } from 'react-router-dom';
+import { useUserContext } from '../context/UserProvider';
+import { Link } from 'react-router-dom';
+import axiosInstance from '../context/axios';
 
 function Navbar() {
+  const { user, setUser } = useUserContext()
 
-    const navigate = useNavigate();
-    const handleLoginClick = () => {
-      navigate('/');
-    };
-    const handleUploadClick = () => {
-        navigate('/editFiles');
-      };
-      const handleShiftClick = () => {
-        navigate('/shift');
-      };
-      const handleProfileClick = () => {
-        navigate('/manageProfile')
-      }
-      const handleFileUploadClick = () => {
-        navigate('/FileUpload')
-      }
-
+  const handleLoginClick =async () => {
+    try {
+      await axiosInstance.get('/logout');
+      setUser(null)
+    } catch (e) {
+      alert("Could not logout")
+    }
+  };
 
   return (
     <div className="choose-page">
       <nav className="navShift">
         <ul>
           <li>
-            <a href="#" className="logo">
-              <img src={picProfile} alt="Profile" />
-              <span className="nav-item" onClick={handleProfileClick}>Admin</span>
-            </a>
+            <Link to="/manageProfile" className="logo">
+              <img src={user?.photo || picProfile} alt="Profile" />
+              <span className="nav-item" >Admin</span>
+            </Link>
           </li>
           <li>
-            <a href="#" className="icon">
+            <Link to="/manageProfile" className="icon">
               <img src={profile} alt="Watch Profile" />
-              <span className="nav-item" onClick={handleFileUploadClick}>My profile</span>
-            </a>
+              <span className="nav-item">My profile</span>
+            </Link>
           </li>
           <li>
-            <a href="#" className="icon">
-              <img src={picUpload} alt="upload"/>
-              <span className="nav-item" onClick={handleUploadClick}>Upload files</span>
-            </a>
+            <Link to="/FileUpload" className="icon">
+              <img src={picUpload} alt="upload" />
+              <span className="nav-item" >Upload files</span>
+            </Link>
           </li>
           <li>
-            <a href="#" className="icon">
-              <img src={picGroup} alt="group"/>
+            <Link href="#" className="icon">
+              <img src={picGroup} alt="group" />
               <span className="nav-item">Group requests</span>
-            </a>
+            </Link>
           </li>
           <li>
-            <a href="#" className="icon">
-              <img src={picCalendar} alt="calendar"/>
-              <span className="nav-item" onClick={handleShiftClick} >Shift</span>
-            </a>
+            <Link to="/shift" className="icon">
+              <img src={picCalendar} alt="calendar" />
+              <span className="nav-item"  >Shift</span>
+            </Link>
           </li>
           <li>
-            <a href="#" className="icon"> 
-              <img src={picLogout} alt="logoutp"/>
+            <Link to="/" className="icon">
+              <img src={picLogout} alt="logoutp" />
               <span className="nav-item" onClick={handleLoginClick}>Log out</span>
-            </a>
+            </Link>
           </li>
         </ul>
       </nav>
@@ -107,7 +101,7 @@ export default Navbar;
 //                 <span class="nav-item">My profile</span>
 //             </a>
 //         </li>
-        
+
 //         <li>
 //             <a href="#" class="icon">
 //                 <img src={picUpload} alt="upload"/>
@@ -128,9 +122,9 @@ export default Navbar;
 //                 <span class="nav-item">Shift</span>
 //             </a>
 //         </li>
-  
+
 //         <li>
-//             <a href="#"  class="icon" > 
+//             <a href="#"  class="icon" >
 //             {/* classlogout */}
 //                 <img src={picLogout} alt="logoutp"/>
 //                 <span class="nav-item">Log out</span>
