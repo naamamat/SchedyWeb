@@ -13,6 +13,7 @@ body{
     background-repeat: no-repeat;
     background-attachment: fixed;
     overflow: hidden;
+    /* background-color: rgb(68, 64, 64); */
 }
 
 .wrapper{
@@ -317,11 +318,16 @@ header{
 
 
 .left-background {
+    /* background: linear-gradient(35deg, #382527, #9f535c, #382527); */
     background-color: #643137;
     width: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
+    /* margin-bottom: 2vh;
+    margin-top: 2vh;
+    margin-left: 1vw;
+    border-radius: 3%; */
 }
 .right-background {
     background-color: rgb(68, 64, 64);

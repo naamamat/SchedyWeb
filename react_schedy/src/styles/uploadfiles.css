@@ -15,28 +15,42 @@
 }
 
 .upload {
-	width: 100vw;
-	height: 100vh;
+	/* width: 100vw; */
+	/* height: 100vh; */
 	display: flex;
 	justify-content: center;
+	flex-direction: column;
 	align-items: center;
-	min-height: 100vh;
+	/* min-height: 100vh; */
 	background: var(--light-blue);
+    /* display: grid;
+    grid-template-columns: 1fr 2fr 3fr;
+    border-radius: 1rem;
+    overflow: hidden;
+    backdrop-filter: blur(5px);
+    border: 2px solid rgba(255, 255, 255, .5);
+    z-index: 3;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.3); */
 }
 
 
 .containerUpload {
 	max-width: 400px;
 	width: 100%;
-	background: #fff;
+	background: linear-gradient(to right bottom, rgba(255, 255, 255, .5), rgba(255, 255, 255, .2));
 	padding: 30px;
+	margin: 30px;
 	border-radius: 30px;
+	backdrop-filter: blur(5px);
+    border: 2px solid rgba(255, 255, 255, .5);
+    z-index: 3;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.3);
 }
 .file-area {
 	position: relative;
 	width: 100%;
-	height: 240px;
-	background: var(--grey);
+	height: 340px;
+	/* background: var(--grey); */
 	margin-bottom: 30px;
 	border-radius: 15px;
 	overflow: hidden;
@@ -44,6 +58,7 @@
 	justify-content: center;
 	align-items: center;
 	flex-direction: column;
+	background: linear-gradient(to right bottom, rgba(103, 73, 73, 0.547), rgba(107, 80, 80, 0.2));
 }
 .file-area .icon {
 	font-size: 100px;
@@ -55,19 +70,22 @@
 }
 .file-area p {
 	color: #999;
+
 }
 .file-area p span {
 	font-weight: 600;
 }
 .file-area img {
 	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
+	/* top: 0;
+	left: 0; */
+	/* width: 100%; */
+	height: 50%;
 	object-fit: cover;
 	object-position: center;
 	z-index: 100;
+	/* background-color: #525252; */
+
 }
 .file-area::before {
 	content: attr(data-img);
@@ -91,10 +109,10 @@
 .file-area.active:hover::before {
 	opacity: 1;
 }
-.select-workers {
-	display: block;
-	width: 100%;
-	padding: 16px 0;
+.submit-button {
+	display: flex;
+	justify-content: center;
+	padding: 16px 16px;
 	border-radius: 15px;
 	background: var(--blue);
 	color: #fff;
@@ -104,7 +122,23 @@
 	cursor: pointer;
 	transition: all .3s ease;
 }
-.select-requitment {
+
+.submit-button {
+	display: flex;
+	justify-content: center;
+	padding: 16px 16px;
+	border-radius: 15px;
+	background: var(--blue);
+	color: #fff;
+	font-weight: 500;
+	font-size: 16px;
+	border: none;
+	cursor: pointer;
+	transition: all .3s ease;
+	margin-bottom: 15px;
+}
+
+.select-workers {
 	display: block;
 	width: 100%;
 	padding: 16px 0;
@@ -123,4 +157,6 @@
 .containerUpload:first-child {
 	margin-right: 20px; /* Adjust the value as needed */
 }
+
+
 

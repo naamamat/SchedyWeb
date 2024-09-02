@@ -7,7 +7,7 @@ import picUser3 from '../pic/user3.png';
 import picUser4 from '../pic/user4.png';
 import picUser5 from '../pic/user5.png';
 import DownloadButtons from './downloadButtons';
-import UserTable from './userTable';
+import UserTable from './shift/userTable';
 import Navbar from './navbar';
 
 

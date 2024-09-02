@@ -1,10 +1,9 @@
 
-import React, { useState } from 'react';
+import React from 'react';
 import picProfile from '../pic/user5.png';
 import '../styles/styleProfile.css'; // Make sure to import a CSS file for styling
 
-function ProfilePic() {
-  const [photo, setPhoto] = useState(picProfile);
+function ProfilePic({ photo, setPhoto }) {
 
   const handleFileChange = (e) => {
     const choosedFile = e.target.files[0];
@@ -19,12 +18,12 @@ function ProfilePic() {
 
   return (
     <div className="profile-pic-div">
-      <img src={photo} id="photo" alt="Profile" />
-      <input 
-        type="file" 
-        id="file" 
-        onChange={handleFileChange} 
-        style={{ display: 'none' }} 
+      <img src={photo || picProfile} id="photo" alt="Profile" />
+      <input
+        type="file"
+        id="file"
+        onChange={handleFileChange}
+        style={{ display: 'none' }}
       />
       <label htmlFor="file" id="uploadBtn">Choose Photo</label>
     </div>

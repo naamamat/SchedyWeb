@@ -1,12 +1,15 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { redirect } from 'react-router-dom';
 import Navbar from './navbarLogin.js';
 import LoginForm from './loginForm.js';
 import RegisterForm from './registerForm.js';
 import logoS from '../pic/logo-no-background.png';
-import Nav from './navbar.js';
+import { useUserContext } from '../context/UserProvider.jsx';
 // import './App.css';
 
 function Register() {
+  const { user } = useUserContext();
+
   const login = () => {
     document.getElementById('login').style.left = '4px';
     document.getElementById('register').style.right = '-520px';
@@ -25,25 +28,29 @@ function Register() {
     document.getElementById('register').style.opacity = 1;
   };
 
+  useEffect(()=> {
+    if (user) {
+      redirect('/shift')
+    }
+  }, [user])
+
   window.login = login;
   window.register = register;
 
   return (
     <div>
-    <div className="wrapper">
-      <Navbar login={login} register={register} />
-      <div class="left-background">
-      <img src={logoS}/>
-      </div>
-      <div class="right-background">
-        <div className="form-box">
-          <LoginForm />
-          <RegisterForm />
+      <div className="wrapper">
+        <Navbar login={login} register={register} />
+        <div class="left-background">
+          <img src={logoS} alt="logo" />
+        </div>
+        <div class="right-background">
+          <div className="form-box">
+            <LoginForm />
+            <RegisterForm />
+          </div>
         </div>
       </div>
-
-    </div>
-      
     </div>
 
   );

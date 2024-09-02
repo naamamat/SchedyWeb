@@ -6,14 +6,19 @@
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
+    "axios": "^1.7.2",
     "bootstrap": "^5.3.3",
+    "date-fns": "^3.6.0",
     "exceljs": "^4.4.0",
     "file-saver": "^2.0.5",
     "ionicons": "^7.4.0",
+    "papaparse": "^5.4.1",
     "react": "^18.3.1",
+    "react-cookie": "^7.1.4",
     "react-dom": "^18.3.1",
     "react-router-dom": "^6.23.1",
     "react-scripts": "5.0.1",
+    "universal-cookie": "^7.1.4",
     "web-vitals": "^2.1.4",
     "xlsx": "^0.18.5",
     "xlsx-style": "^0.8.13"
@@ -41,5 +46,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@types/date-fns": "^2.6.0",
+    "@types/express": "^4.17.21"
   }
 }
