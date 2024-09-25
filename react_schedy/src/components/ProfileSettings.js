@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import '../styles/profile.css';
+
 // import 'bootstrap/dist/css/bootstrap.min.css';
 
 const ProfileSettings = () => {

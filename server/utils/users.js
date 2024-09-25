@@ -1,4 +1,4 @@
-const { User } = require('./schema/user'); 
+const { User } = require('../schema/user');
 
 
 function validateId(id) {

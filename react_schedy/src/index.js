@@ -1,13 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { CookiesProvider } from 'react-cookie';
-import Shift from './components/shift/shift.js';
+import Shift from './components/shifty/shift.js';
+import ShiftWorker from './components/shifty/shiftWorker.js';
 import EditFiles from './components/editFiles';
 import Login from './components/register.js';
 import reportWebVitals from './reportWebVitals';
-import ManagerProfile from './components/managerProfile';
+import ManagerProfile1 from './components/managerProfile';
+import HomePage from './components/homePage.js';
 import FileUpload from './components/fileUpload';
 import ProfileSettings from './components/ProfileSettings';
+import WorkersProfiles from './components/workersProfiles';
+import WorkersList from './components/workersList/workersList.js';
+import ShiftsList from './components/shiftsList/shiftsList.js';
+
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { UserProvider } from './context/UserProvider.jsx';
 
@@ -20,9 +26,14 @@ root.render(
           <Routes>
             <Route path='ProfileSettings' element={<ProfileSettings />} />
             <Route path='FileUpload' element={<FileUpload />} />
-            <Route path='manageProfile' element={<ManagerProfile />} />
+            <Route path='manageProfile' element={<ManagerProfile1 />} />
+            <Route path='homePage' element={<HomePage />} />
             <Route path="editFiles" element={<EditFiles />} />
             <Route path="/shift" element={<Shift />} />
+            <Route path="/WorkersList" element={<WorkersList />} />
+            <Route path="/ShiftsList" element={<ShiftsList />} />
+            <Route path="/shiftWorker" element={<ShiftWorker />} />
+            <Route path="/shiftWorker/:id" element={<ShiftWorker />} />
             <Route path="/" element={<Login />} />
           </Routes>
         </UserProvider>

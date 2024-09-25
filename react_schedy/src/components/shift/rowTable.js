@@ -417,36 +417,36 @@
 
 
 
-import React from 'react';
-import PropTypes from 'prop-types';
-import UserTableOptions from './userTableOptions';
+// import React from 'react';
+// import PropTypes from 'prop-types';
+// import UserTableOptions from './userTableOptions';
 
-function RowTable({ timePosition, weekUser, rowIndex, onEdit }) {
-  return (
-    <tr>
-      <td>{timePosition[0]}</td>
-      <td>{timePosition[1]}</td>
-      {weekUser.map((user, colIndex) => (
-        <td key={colIndex} className="clickable-td">
-          <UserTableOptions
-            name={user[0]}
-            picture={user[1]}
-            pos={timePosition[1] || "default"} // Ensure position is valid
-            onEdit={(newValue) => onEdit(rowIndex, colIndex, newValue)}
-          />
-        </td>
-      ))}
-    </tr>
-  );
-}
+// function RowTable({ timePosition, weekUser, rowIndex, onEdit }) {
+//   return (
+//     <tr>
+//       <td>{timePosition[0]}</td>
+//       <td>{timePosition[1]}</td>
+//       {weekUser.map((user, colIndex) => (
+//         <td key={colIndex} className="clickable-td">
+//           <UserTableOptions
+//             name={user[0]}
+//             picture={user[1]}
+//             pos={timePosition[1] || "default"} // Ensure position is valid
+//             onEdit={(newValue) => onEdit(rowIndex, colIndex, newValue)}
+//           />
+//         </td>
+//       ))}
+//     </tr>
+//   );
+// }
 
-RowTable.propTypes = {
-  timePosition: PropTypes.arrayOf(PropTypes.string).isRequired,
-  weekUser: PropTypes.arrayOf(PropTypes.array).isRequired,
-  rowIndex: PropTypes.number.isRequired,
-  onEdit: PropTypes.func.isRequired,
-};
+// RowTable.propTypes = {
+//   timePosition: PropTypes.arrayOf(PropTypes.string).isRequired,
+//   weekUser: PropTypes.arrayOf(PropTypes.array).isRequired,
+//   rowIndex: PropTypes.number.isRequired,
+//   onEdit: PropTypes.func.isRequired,
+// };
 
-export default RowTable;
+// export default RowTable;
 
 

@@ -74,25 +74,53 @@ function splitShiftsByDay(shifts) {
     return days;
 }
 
+// async function processAllDays(days, workers) {
+//     const daysOfWeek = Object.keys(days);
+//     const results = {};
+
+//     for (const day of daysOfWeek) {
+//         len = days[day].length
+//         if (len > 0) {
+//             try {
+//                 const result = await runPythonScript(workers, days[day]);
+//                 results[day] = result;
+//                 console.log(`Best schedule for ${day}:`, result);
+//             } catch (error) {
+//                 console.error(`Error processing ${day}:`, error);
+//             }
+//         }
+//     }
+
+//     return results;
+// }
+
 async function processAllDays(days, workers) {
     const daysOfWeek = Object.keys(days);
-    const results = {};
-
-    for (const day of daysOfWeek) {
-        len = days[day].length
+    const promises = daysOfWeek.map(async (day) => {
+        const len = days[day].length;
         if (len > 0) {
             try {
                 const result = await runPythonScript(workers, days[day]);
-                results[day] = result;
                 console.log(`Best schedule for ${day}:`, result);
+                return { day, result };
             } catch (error) {
                 console.error(`Error processing ${day}:`, error);
+                return { day, error }; // Return the error as part of the result
             }
         }
-    }
+    });
+
+    const resultsArray = await Promise.all(promises);
+
+    // Convert the results array to an object with days as keys
+    const results = resultsArray.reduce((acc, curr) => {
+        if (curr) acc[curr.day] = curr.result || curr.error;
+        return acc;
+    }, {});
 
     return results;
 }
+
 
 function sortByDay(shifts) {
     const days = {
@@ -136,21 +164,21 @@ function functionFix(results) {
     to put to each number in the days the actuall number of the shift
     */
         const daysOfWeek = Object.keys(results);
-        
+
         // Iterate through the days from Sunday to Saturday
         for (let i = 0; i < daysOfWeek.length - 1; i++) {
             const currentDay = daysOfWeek[i];
             const nextDay = daysOfWeek[i + 1];
-            
+
             // Find the maximum number in the next day's array
             const maxtDay = Math.max(...results[currentDay].flat());
-    
+
             // Add the maximum number of the next day to all numbers in the current day
             results[nextDay] = results[nextDay].map(shift => {
                 return shift.map(num => num + maxtDay+1);
             });
         }
-        
+
         // Return the modified days object
         return results;
 }
@@ -158,16 +186,16 @@ function functionFix(results) {
 function combineShifts(results) {
     // Initialize an array to store combined shifts
     const combinedShifts = [];
-  
+
     const days = Object.keys(results);
-    
-    const shiftsLength = results.Monday.length;//how many workers 
-  
+
+    const shiftsLength = results.Monday.length;//how many workers
+
     // Iterate through each index 'i' across all days
     for (let i = 0; i < shiftsLength; i++) {
       // Create an array to hold shifts for index 'i' across all days
       const shiftsAtI = [];
-  
+
       // Iterate through each day
       for (const day of days) {
         // Check if the current day has shifts at index 'i'
@@ -179,11 +207,11 @@ function combineShifts(results) {
           shiftsAtI.push([]);
         }
       }
-  
+
       // Push shiftsAtI into combinedShifts
       combinedShifts.push(shiftsAtI);
     }
-  
+
     return combinedShifts;
   }
 
@@ -198,7 +226,7 @@ function combineShifts(results) {
 //         const otherShiftEnd = parseTime(otherShift.shiftEndTime);
 //         const otherShiftDate = otherShift.shiftDate;
 
-//         if ((otherShiftDate===shiftDate && shiftStart < otherShiftEnd && shiftEnd > otherShiftStart) || 
+//         if ((otherShiftDate===shiftDate && shiftStart < otherShiftEnd && shiftEnd > otherShiftStart) ||
 //             (otherShiftDate===shiftDate && shiftEnd > otherShiftStart && shiftStart < otherShiftEnd)||
 //             (otherShiftDate===shiftDate && shiftStart > otherShiftStart && shiftEnd < otherShiftEnd))
 //              {
@@ -217,22 +245,22 @@ function isWorkerAvailable(worker, shift, allShifts) {
     const shiftStart = parseTime(shift.shiftStartTime);
     const shiftEnd = parseTime(shift.shiftEndTime);
     const shiftDate = shift.shiftDate
-  
-    console.log("Checking availability for worker:", worker);
-    console.log("Shift date:", shiftDate, "Shift start:", shiftStart, "Shift end:", shiftEnd);
-  
+
+    // console.log("Checking availability for worker:", worker);
+    // console.log("Shift date:", shiftDate, "Shift start:", shiftStart, "Shift end:", shiftEnd);
+
     // Check if worker is already assigned to a conflicting shift
     for (const otherShift of allShifts) {
       if (isWorkerInList(worker, otherShift.workers)) {
         const otherShiftStart = parseTime(otherShift.shiftStartTime);
         const otherShiftEnd = parseTime(otherShift.shiftEndTime);
         const otherShiftDate = otherShift.shiftDate
-        console.log("Comparing with other shift:");
-        console.log("Other shift date:", otherShiftDate, "Other shift start:", otherShiftStart, "Other shift end:", otherShiftEnd);
-  
-        if (otherShiftDate.getTime() === shiftDate.getTime() && 
+        // console.log("Comparing with other shift:");
+        // console.log("Other shift date:", otherShiftDate, "Other shift start:", otherShiftStart, "Other shift end:", otherShiftEnd);
+
+        if (otherShiftDate.getTime() === shiftDate.getTime() &&
             shiftStart < otherShiftEnd && shiftEnd > otherShiftStart) {
-          console.log("Conflict found for worker:", worker.id);
+          console.error("Conflict found for worker:", worker.id);
           return false; // Conflict found, worker is not available
         }
       }
@@ -244,28 +272,28 @@ function isWorkerAvailable(worker, shift, allShifts) {
     const [hours, minutes] = time.split(':');
 
     return new Date(0, 0, 0, hours, minutes);
-  }  
+  }
 
   function findReplaceableWorkers(shifts, workers) {
     return shifts.map(shift => {
       const requiredSkill = shift.skill;
-  
+
       const replaceableWorkers = [];
-      
+
       for (const worker of workers) {
-        
+
             if (worker.skills.includes(requiredSkill)) {
           if (isWorkerAvailable(worker, shift, shifts)) {
             replaceableWorkers.push(worker);
           }
-        
+
         }
-        
+
       }
-  
+
       shift.replaceableWorkers = replaceableWorkers;
-      
-      return shift; 
+
+      return shift;
     });
   }
 
@@ -274,9 +302,9 @@ const processShift = async (shifts, workers, organizationId, startOfTheWeek) => 
         shifts= sortByDay(shifts)// sort
         //console.log(shifts)
         const days = await splitShiftsByDay(shifts)
-        // I have now 
-        // days.day for each day 
-        
+        // I have now
+        // days.day for each day
+
         const results = await processAllDays(days, workers);
 
         //console.log("Result from Python script:", results);
@@ -307,14 +335,13 @@ const processShift = async (shifts, workers, organizationId, startOfTheWeek) => 
                 shiftStartTime: shift.start_hour,
                 shiftEndTime: shift.end_hour,
                 workers: shift.workers,
-                replaceableWorkers: [],
                 skill: shift.skill,
             };
         });
 
-        
-        schedulee= await findReplaceableWorkers(schedulee, workers) 
-        console.log(schedulee)
+
+        // schedulee=await findReplaceableWorkers(schedulee, workers)
+
         return schedulee
     } catch (error) {
         console.error("Failed to process shifts:", error);
@@ -323,5 +350,6 @@ const processShift = async (shifts, workers, organizationId, startOfTheWeek) => 
 };
 
 module.exports = {
-    processShift
+    processShift,
+    findReplaceableWorkers
 };

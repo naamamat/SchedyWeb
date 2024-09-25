@@ -1,81 +1,55 @@
-import React, { useState, useRef, useEffect } from 'react';
-import PropTypes from 'prop-types';
-import picUser1 from '../../pic/user1.png';
-import picUser2 from '../../pic/user2.png';
-import picUser3 from '../../pic/user3.png';
+// import React, { useState } from 'react';
+// import PropTypes from 'prop-types';
+// import picUser1 from '../../pic/user1.png';
+// import { ReplaceableWorkersDropdown } from './replaceableWorkersDropdown';
 
-// Define your user options
-const userOptions = {
-  "service": [
-    { name: "service 1", picture: picUser1 },
-    { name: "service 2", picture: picUser2 },
-    { name: "service 3", picture: picUser3 }
-  ],
-  "default": [
-    { name: "math 1", picture: picUser1 },
-    { name: "math 2", picture: picUser2 },
-    { name: "math 3", picture: picUser3 }
-  ]
-};
 
-function UserTableOptions({ name, picture = picUser1, pos, onEdit }) {
-  const [isOpen, setIsOpen] = useState(false);
-  const [selected, setSelected] = useState({ name, picture });
-  const dropdownRef = useRef(null);
+// function UserTableOptions({ currentWorker, pos, onDelete, onReplace, rowData, }) {
+//   const [selected, setSelected] = useState(currentWorker);
+//   const { replaceableWorkers } = rowData || {};
 
-  const handleSelect = (option) => {
-    setSelected(option);
-    onEdit?.([option.name, option.picture]);
-    setIsOpen(false);
-  };
+//   const onWorkerEdit = (newValue) => {
+//     setSelected(newValue);
+//     onReplace(newValue);
+//   };
 
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
-        setIsOpen(false);
-      }
-    };
+//   const deleteWorker =() => {
+//     alert(`Deleted ${currentWorker.fullName}`)
+//     onDelete(currentWorker);
+//   }
 
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-    };
-  }, []);
+//   return (
+//     <div className="td-person">
 
-  const generateOptions = () => {
-    return userOptions[pos].map(option => (
-      <div key={option.name} className="dropdown-option" onClick={() => handleSelect(option)}>
-        <div className="td-person">
-          <span>{option.name}</span>
-          <img src={option.picture} alt={option.name} />
-        </div>
-      </div>
-    ));
-  };
+//       <ReplaceableWorkersDropdown replaceableWorkers={replaceableWorkers} onEdit={onWorkerEdit}>
+//       <div className="td-person">
+//       <div className='ReplacePic'>
+//                 <button className="delete" onClick={deleteWorker}>⛔️</button>
+//             </div>
+//             <div className='ReplacePic'>
+//                 <img src={picUser1} alt={selected.fullName} />
+//             </div>
 
-  return (
-    <div className="custom-dropdown" ref={dropdownRef} onClick={() => setIsOpen(!isOpen)}>
-      <div className="td-person">
-        <span>{selected.name || ''}</span>
-        {selected.picture ? (
-          <img src={selected.picture} alt={selected.name} />
-        ) : null}
-      </div>
-      {isOpen && (
-        <div className="dropdown-menu">
-          {generateOptions()}
-        </div>
-      )}
-    </div>
-  );
-}
+//             <div className='ReplaceTd'>
+//                 <span>{selected.fullName || ''}</span>
+//             </div>
 
-UserTableOptions.propTypes = {
-  name: PropTypes.string,
-  picture: PropTypes.string,
-  pos: PropTypes.string.isRequired,
-  onEdit: PropTypes.func.isRequired,
-};
 
-export default UserTableOptions;
+//         </div>
+//       </ReplaceableWorkersDropdown>
+
+
+
+
+//     </div>
+//   );
+// }
+
+// UserTableOptions.propTypes = {
+//   currentWorker: PropTypes.object,
+//   pos: PropTypes.string.isRequired,
+//   onEdit: PropTypes.func.isRequired,
+// };
+
+// export default UserTableOptions;
 

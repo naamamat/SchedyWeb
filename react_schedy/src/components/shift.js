@@ -167,6 +167,7 @@ function Shift() {
       <Navbar />
 
       <section className="main">
+
         <div className="center-header">
           <h1 className="header">-Shift -</h1>
           <div className="choose-section">
