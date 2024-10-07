@@ -5,7 +5,7 @@ import ExcelJS from 'exceljs';
 import { saveAs } from 'file-saver';
 
 
-function DownloadButtons() {
+function DownloadButtons(props) {
 
     const handleDownloadShift = async () => {
         const workbook = new ExcelJS.Workbook();
@@ -164,29 +164,32 @@ saveAs(blob, 'Roles_Schedule.xlsx');
 
   return (
     
-    <div class="buttons-g">
-          <div><h3> Download files: </h3></div>
-<div class="radio-tile-group">
+<div className="buttons-p">
+  <div >
+      <text className='regularText'>{props.text}</text>
+
+
+
+  <div class="radio-tile-group">
 
     <div class="input-container">
-      <input id="walk" type="radio" name="radio" onClick={handleDownloadShift} />
-      <div class="radio-tile">
-        <ion-icon name="walk"></ion-icon>
-        <label for="walk" >SHIFT</label>
-      </div>
+        <input id="walk" type="radio" name="radio" onClick={handleDownloadShift} />
+        <div class="radio-tile">
+            <ion-icon name="walk"></ion-icon>
+            <label for="walk" >SHIFT</label>
+        </div>
     </div>
 
     <div class="input-container">
-      <input id="bike" type="radio" name="radio" onClick={handleDownloadRoles}/>
-      <div class="radio-tile">
-        <ion-icon name="bicycle"></ion-icon>
-        <label for="bike">ROLES</label>
-      </div>
+        <input id="bike" type="radio" name="radio" onClick={handleDownloadRoles}/>
+        <div class="radio-tile">
+          <ion-icon name="bicycle"></ion-icon>
+          <label for="bike">ROLES</label>
+        </div>
     </div>
-
-
   </div>
-    </div>
+  </div>
+</div>
     
 
   );

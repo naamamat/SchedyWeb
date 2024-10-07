@@ -2,27 +2,30 @@ import React, { useState } from 'react';
 import ProfilePicUploader from './profilePic.js';
 import { useNavigate } from "react-router-dom";
 import axiosInstance from '../context/axios.js';
+import { useUserContext } from '../context/UserProvider.jsx';
 
 function RegisterForm() {
+  const { setUser } = useUserContext();
   const [photo, setPhoto] = useState();
   const [firstName, SetFirstNmae] = useState('')
   const[lastName, SetLastName] = useState('')
   const[email, SetEmail] = useState('')
   const[id, SetId] = useState('')
   const[password, SetPassword] = useState('')
+  const[orgId, SetOrgId] = useState('')
 
   const navigate = useNavigate();
   async function Register(e){
     e.preventDefault()
 
     try{
-
-      const res = await axiosInstance.post(`/register`,{firstName, lastName, email, id, password, photo})
-      alert("success")
-      navigate('/shift');
+      await axiosInstance.post(`/register`,{firstName, lastName, email, id, password, photo, orgId })
+      const { data } = await axiosInstance.post(`/login`,{ email, password})
+      setUser(data.user)
+      navigate('/homePage');
     } catch(e){
       console.log(e)
-      alert(e)
+      alert(e?.response?.data?.error)
     }
 
   }
@@ -31,7 +34,7 @@ function RegisterForm() {
     <div className="register-container" id="register">
       <ProfilePicUploader photo={photo} setPhoto={setPhoto} />
       <div className="top">
-        <header>Sign Up</header>
+        <header className='headerS'>Sign Up</header>
         <span>Have an account? <a href="#" onClick={window.login}>Login</a></span>
       </div>
       <div className="buttom">
@@ -52,6 +55,10 @@ function RegisterForm() {
       </div>
       <div className="input-box">
         <input type="text" className="input-field" placeholder="ID" id="id-register" onChange = {(e)=>{SetId(e.target.value)}}/>
+        <i className="bx bx-user"></i>
+      </div>
+      <div className="input-box">
+        <input type="text" className="input-field" placeholder="Org ID" id="org-id-register" onChange = {(e)=>{SetOrgId(e.target.value)}}/>
         <i className="bx bx-user"></i>
       </div>
       <div className="input-box">

@@ -1,7 +1,7 @@
 /* POPPINS FONT */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
 
-*{  
+*{
     /* margin: 3px; */
     padding: 0;
     box-sizing: border-box;
@@ -77,7 +77,7 @@ body{
 }
 .btn.white-btn{
     background:  #643137
-    
+
 }
 .btn.btn.white-btn:hover{
     background:  #854a51;
@@ -114,7 +114,7 @@ body{
 
 }
 .top span{
-    color: #fff;
+    color: #4f4848;
     font-size: medium;
     padding: 10px 0;
     display: flex;
@@ -122,14 +122,21 @@ body{
 }
 .top span a{
     font-weight: 500;
-    color: #fff;
+    color: #4f4848;
     margin-left: 5px;
 }
 header{
-    color:  #ffffff;
+    color:  #4f4848;
     font-size: 45px;
     text-align: center;
     padding: 10px 0 10px 0;
+}
+.headerS {
+    color:  #4f4848;
+    font-size: 45px;
+    text-align: center;
+    padding: 0px;
+
 }
 .two-forms{
     display: flex;
@@ -137,8 +144,8 @@ header{
 }
 .input-field{
     font-size: 17px;
-    background: rgba(255, 255, 255, 0.2);
-    color: #fff;
+    background: #887c7c;
+    color: white;
     height: 50px;
     width: 100%;
     padding: 0 10px 0 45px;
@@ -148,7 +155,7 @@ header{
     transition: .2s ease;
 }
 .input-field:hover, .input-field:focus{
-    background: rgba(255, 255, 255, 0.25);
+    background: #b4a3a3;
 }
 ::-webkit-input-placeholder{
     color: #fff;
@@ -158,7 +165,7 @@ header{
     position: relative;
     /* top: -35px;
     left: 17px; */
-    color: #fff;
+    color: #4f4848;
 }
 .submit{
     font-size: 17px;
@@ -180,7 +187,7 @@ header{
 .two-col{
     display: flex;
     justify-content: space-between;
-    color: #fff;
+    color: #4f4848;
     font-size: medium;
     margin-top: 10px;
 }
@@ -190,7 +197,7 @@ header{
 }
 .two label a{
     text-decoration: none;
-    color: #fff;
+    color: #4f4848;
 }
 .two label a:hover{
     text-decoration: underline;
@@ -330,7 +337,8 @@ header{
     border-radius: 3%; */
 }
 .right-background {
-    background-color: rgb(68, 64, 64);
+    background-color:rgb(226, 226, 226);
+
     width: 50%;
     display: flex;
     justify-content: center;
@@ -344,7 +352,7 @@ header{
     justify-content: space-around;
     margin: 2.5vw;
     width: 15vw;
-    
+
 }
 
 

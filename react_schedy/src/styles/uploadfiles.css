@@ -160,3 +160,134 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.slider-upload {
+    background-color: var(--bg);
+    padding: 1rem;
+    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    place-items: center;
+    grid-gap: 2rem;
+    /* padding-left: 20vw; */
+    font: normal 1rem sans-serif;
+}
+
+
+
+.cardUpload {
+    position: relative;
+    width: 40vw;
+    height: 50vh;
+    background-color:linear-gradient(to right bottom, rgba(255, 255, 255, .5), rgba(255, 255, 255, .2));
+    color: #4f4848;
+    border-radius: 1rem;
+    /* border: .1rem solid transparent; */
+    overflow: hidden;
+    /* box-shadow: 0 .2rem .6rem #0003; */
+    transition: .5s ease-in-out;
+    border-radius: 30px;
+    backdrop-filter: blur(5px);
+    border: 2px solid rgba(255, 255, 255, .5);
+    z-index: 3;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.3); 
+
+}
+
+.cardUpload:hover {
+    border: .1rem solid var(--secondary);
+    transform: scale(1.05);
+}
+
+.cardUpload::before, .card::after {
+    position: absolute;
+    content: "";
+    background-color: var(--secondary);
+    border-radius: 50%;
+    transition: .5s ease-in-out;
+    z-index: 100;
+}
+
+.cardUpload::before {
+    top: -6%;
+    right: -6%;
+    width: 15vh;
+    height: 15vh;
+}
+
+.cardUpload::after {
+    bottom: -6%;
+    left: -6%;
+    width: 7vh;
+    height: 7vh;
+}
+
+.cardUpload:hover::before {
+    transform: scale(1.8);
+}
+
+.cardUpload:hover::after {
+    transform: scale(0);
+}
+
+.cardUpload:hover .card-imgU,
+.cardUpload:hover .card-titleU,
+.cardUpload:hover .card-body,
+.cardUpload:hover .card-footer {
+    transform: translateY(0);
+}
+
+  
+input[type="file"] {
+	display: none;
+	visibility: 'hidden';
+  }
+
+
+  .card-imgU {
+	margin-top: 10vh;
+    width: auto;
+    height: 18vh;
+}
+
+.card-titleU {
+    font-size: 2vh;
+    text-transform: capitalize;
+    transition-delay: .1s;
+}
+
+
+.card-card-expU {
+    font:  3vh sans-serif;
+}
+
+
+
+.pStyle{
+    color: #4f4848;
+    padding-left: 22vw;
+    padding-right: 22vw;
+}
+
+
+

@@ -14,6 +14,7 @@ export const UserProvider = ({ children }) => {
       console.log(res.data.user)
       if (res.data.user) {
         setUser(res.data.user)
+        navigate('/homePage');
       }
     }).catch((e)=> {
       setUser(null)
@@ -21,9 +22,7 @@ export const UserProvider = ({ children }) => {
   },[])
 
   useEffect(()=> {
-    if (user) {
-      navigate('/shift')
-    } else {
+    if (!user) {
       navigate('/')
     }
   }, [user])

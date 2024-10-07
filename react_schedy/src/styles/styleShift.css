@@ -30,7 +30,7 @@ body{
   }
 
 
-/*   
+/*
  nav {
   position: sticky;
   top: 0;
@@ -74,14 +74,14 @@ body{
     height: 40px;
     border-radius: 50%;
     margin-left: 5px;
-  
+
   }
 .logo span{
   font-weight: bold;
   padding-left: 15px;
   font-size: 18px;
   text-transform: uppercase;
-  color: white; 
+  color: white;
 }
 
 /* a{
@@ -122,7 +122,7 @@ nav .fas{
 .choose-page a:hover{
   background:  #854a51;
 
-  
+
 }
 /* .choose-page .nav-item{
 
@@ -130,8 +130,8 @@ nav .fas{
 
 /* .choose-page:hover{
     width: 220px ;
-  
-    
+
+
   } */
 
 
@@ -225,7 +225,7 @@ a:hover i{
   text-transform: capitalize;
     /* max-height: 50%; */
   /* height: 70%; */
-      max-height: 75vh;
+      max-height: 70vh;
   overflow: auto;
     margin: 5px 0;
 }
@@ -299,6 +299,41 @@ a:hover i{
   color: #fff;
   transition: 0.5rem;
 }
+
+
+.table button.save{
+  margin: 5px; 
+  width: 80px;;
+  padding: 6px 20px;
+  border-radius: 10px;
+  cursor: pointer;
+  background:  #643137;
+  border: 0px solid;
+}
+.table button.save:hover{
+  background: #854a51;
+  color: #fff;
+  transition: 0.5rem;
+}
+.table button.delete {
+  margin: 10px;
+  padding: 2px 5px;
+  border: 0px solid #bc1b1b;
+  /* background: white; */
+}
+td{
+  min-width: 10vw;
+}
+/* 
+.td-shift{
+  width: 5vw;
+} */
+
+
+.table button:hover.delete{
+  background: #bc1b1b;
+}
+
   ul {
     list-style-type: none; /* Removes bullet points */
     padding: 0; /* Removes padding */
@@ -316,7 +351,7 @@ a:hover i{
     display: flex;
     margin: 30px 0 10px 10px;
   }
-  
+
   .icon img{
     width: 30px;
     height: 30px;
@@ -359,6 +394,9 @@ a:hover i{
     justify-content:center;
     /* align-items: center; */
 }
+
+
+
 .choose-section button,
 .choose-section span {
     margin: 0 2px; /* Adjust the margin to 2px */
@@ -374,7 +412,19 @@ a:hover i{
 .attendance-list td {
     border: 1px solid #dddddd;
     text-align: left;
-    padding: 8px;
+    /* padding: 8px; */
+}
+
+.workersList th,
+.workersList td {
+    border: 0px solid #dddddd;
+    text-align: left;
+    /* padding: 8px; */
+}
+
+.workersList td:hover {
+  background-color:#b9b6b9;
+  color: white;
 }
 
 .attendance-list tr:nth-child(even) {
@@ -469,7 +519,7 @@ a:hover i{
 
   }
   .users-hed{
-    margin: 30px 0 10px 20px; 
+    margin: 30px 0 10px 20px;
     color: white;
   }
 
@@ -485,17 +535,42 @@ a:hover i{
 .td-person{
     display: flex;
     justify-content:center;
+    min-height: 3.3vw;
 }
   .td-person img{
-    width: 30px;
-    height: 30px;
-    margin: 5px; 
+    width: 1.8vw;
+    height: 1.8vw;
+    /* margin: 0.05vw; */
+    justify-self: center;
   }
-  .td-person span{
+
+  .ReplaceTd{
+    display: grid;
+    width: 4.5vw ;
+    justify-self: center;
+    align-items: center;
+  }
+  .ReplacePic{
+    display: grid;
+    width: 2.1vw;
+    /* padding: 0.1vw; */
+    margin: 0.1vw;
+    justify-self: center;
+    align-items: center;
+  }
+
+  .ReplaceTd span{
+    text-align: left;
+    margin-left: 0.1vw;
+    font-size: 16px;
+    /* justify-content: center;
+    align-items: center; */
+    /* margin-top: 1vw;
+    top: 1vw;; */
     /* position: relative; */
-    top: 5px;
+    /* top: 5px;
     margin-top: 7px;
-    margin-left: 2px;
+    margin-left: 2px; */
     /* margin: 5px;  */
   }
 
@@ -525,16 +600,18 @@ a:hover i{
     font-weight: normal; /* Remove bold style */
 }
 .Font-small {
-    font-size: 12px; /* You can adjust the font size as needed */
+    font-size: 15px; /* You can adjust the font size as needed */
     font-weight: normal; /* Remove bold style */
 }
 
 .dropdown-menu{
-  position:absolute;
+  position:static;
   /* margin-left: 40px; */
   background-color:#643137;
   border-radius: 5px;
   color: #fff;
+  max-height: 300px;
+  overflow: auto;
 }
 
 .dropdown-option{
@@ -543,8 +620,8 @@ a:hover i{
   width: 70%; */
   /* padding: 10px;
  */
- padding-left: 10px;
- padding-right: 10px;
+ /* padding-left: 10px;
+ padding-right: 10px; */
 
 }
 
@@ -552,8 +629,105 @@ a:hover i{
   background-color:#854a51;
 }
 
+.img-WorkerList{
+  width: 50px;
+  margin: 10px;
+
+}
 
 
+.filter-section {
+  margin-left: 10px;
+  margin-right: 10px;
+  display: flex;
+  justify-content:center;
+  /* align-items: center; */
+
+
+  color: white;
+  justify-self: center;    
+  /* flex-wrap: wrap; */
+  align-items: center;
+  /* background: linear-gradient(to right bottom, rgba(255, 255, 255, .5), rgba(255, 255, 255, .2));
+  background:  #643137; */
+  padding: 2vh;
+  border-radius: 30px;
+  backdrop-filter: blur(5px);
+    border: 2px solid rgba(255, 255, 255, .5);
+    z-index: 3;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.3); 
+}
+
+
+.filter-section div{
+  /* padding: 6px 20px;
+  border-radius: 10px;
+  cursor: pointer;
+  background: transparent;
+  border: 1px solid  #643137; */
+  margin-left: 5px;
+  margin-right: 5px;
+  background: #453c3d;
+  background: #643137;
+  padding: 10px;
+  border-radius: 10px;
+  font-size: 17px;
+  /* width: 260px; */
+}
+
+.filter-section input{
+  padding: 1px;
+  border-radius: 10px;
+  width: 60px;
+  background: #854a51;
+  color: white;
+  
+}
+.filter-section input:hover{
+  padding: 1px;
+  border-radius: 10px;
+  width: 150px;
+}
+
+.filter-section button{
+  padding-left: 5px;
+  padding-right: 5px;
+  border-radius: 10px;
+  cursor: pointer;
+  background: transparent;
+  border: 1px solid  #643137;
+  color: white;
+  margin-left: 2px;
+  margin-right: 2px;
+  font-family: "Poppins", sans-serif!important;
+  font-size: 17px;
+}
+
+.filter-section button:hover{
+
+  background:#854a51;
+
+}
+
+.filter-section form{
+  display: flex;
+}
+.longText input{
+  width: 200px;
+}
+
+.longText input:hover{
+  width: 250px;
+}
+.input-button input{
+  background:  #643137;
+  width: auto;
+  font-size: 16px;
+}
+.input-button input:hover{
+width: auto;
+background:#854a51;
+}
 
 
 
@@ -604,3 +778,6 @@ a:hover i{
 .clickable-td {
   cursor: pointer;
 } */
+
+
+

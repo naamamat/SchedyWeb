@@ -28,8 +28,8 @@
     align-items: center;
 
     background: linear-gradient(to right bottom, rgba(255, 255, 255, .5), rgba(255, 255, 255, .2));
-    padding: 20px;
-    margin: 30px;
+    padding: 2vh;
+    margin: 2vh;
     border-radius: 30px;
     backdrop-filter: blur(5px);
       border: 2px solid rgba(255, 255, 255, .5);
@@ -37,12 +37,34 @@
       box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.3); 
 
   }
+
+  .buttons-p{
+    justify-content: center;    
+    /* flex-wrap: wrap; */
+    width:94vw;
+    display: flex;
+    align-items: center;
+
+    /* background: linear-gradient(to right bottom, rgba(255, 255, 255, .5), rgba(255, 255, 255, .2)); */
+    padding: 2vh;
+    margin: 2vh;
+    /* border-radius: 30px; */
+    backdrop-filter: blur(5px);
+      /* border: 2px solid rgba(255, 255, 255, .5); */
+      z-index: 3;
+      /* box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.3);  */
+
+  }
+
+
+
+
   
   .input-container {
     position: relative;
-    height: 4rem;
-    width: 7rem;
-    margin: 0.5rem;
+    height: 4vh;
+    width: 7vh;
+    margin: 0.5vh;
   }
   
   .input-container input {
@@ -93,3 +115,66 @@
   input:checked+.radio-tile label {
     color: white;
   }
+  .picHeader{
+    width: 25vh;
+          box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.3); 
+              border-radius: 30px;
+  }
+
+  /* .specialP::before{
+    content: attr(data-text);
+    animation: animate 6s linear infinite;
+    color: #854a51;
+  } */
+
+
+
+  .specialP {
+    position: relative;
+    font-size: 2vh;
+    color: #c2c5d0;
+    -webkit-text-stroke: 0.3vw #c2c5d0;
+    /* text-transform: uppercase; */
+}
+
+.specialP::before {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    color: #854a51;
+    -webkit-text-stroke: 0vw #383d52;
+    border-right: 0.5px solid #854a51;
+    overflow: hidden;
+    animation: animate 2s linear infinite;
+}
+
+.noSpecialP{
+  position: relative;
+  font-size: 2vh;
+
+}
+@keyframes animate{
+
+  0%,100%, 100%{
+    width: 0%;
+  }
+  70%,90%{
+    width: 100%;
+  }
+
+}
+
+
+
+.buttons-s{
+  justify-content: center;    
+  display: flex;
+  align-items: center;
+  padding: 2vh;
+  backdrop-filter: blur(5px);
+  z-index: 3;
+
+}

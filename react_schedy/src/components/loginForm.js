@@ -4,12 +4,14 @@ import '../styles/styleLogin.css';
 import {useState} from 'react'
 import { useUserContext } from '../context/UserProvider';
 import axiosInstance from '../context/axios';
+import { useNavigate } from "react-router-dom";
 
 function LoginForm() {
   const { setUser } = useUserContext();
 
   const[email, SetEmail] = useState('')
   const[password, SetPassword] = useState('')
+  const navigate = useNavigate();
 
   async function submit(e){
     e.preventDefault()
@@ -17,6 +19,7 @@ function LoginForm() {
     try{
       const res = await axiosInstance.post(`/login`,{ email, password})
       setUser(res.data.user)
+      navigate('/homePage');
     } catch (e) {
       if (e.response?.data?.error){
         alert(e.response?.data.error)

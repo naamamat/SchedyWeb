@@ -7,8 +7,9 @@ const userSchema = new Schema({
     lastName: { type: String, required: true },
     email: { type: String, required: true, unique: true },
     userId: { type: Number, required: true, unique: true },
+    orgId: { type: String, required: true, unique: false },
     password: { type: String, required: true, select: false },
-    photo: { type: String, required: true }
+    photo: { type: String, required: false }
 });
 
 const User = mongoose.model('User', userSchema);

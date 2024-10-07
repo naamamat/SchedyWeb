@@ -30,7 +30,7 @@ function Register() {
 
   useEffect(()=> {
     if (user) {
-      redirect('/shift')
+      redirect('/homePage')
     }
   }, [user])
 
