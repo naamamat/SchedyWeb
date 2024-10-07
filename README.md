@@ -6,6 +6,12 @@
 
 Schedy is a shift placement system that utilizes an evolutionary algorithm to optimize schedules, enhancing workforce management efficiency. This project features a **React-based frontend**, a **Node.js and MongoDB backend**, and integrates **Python** for the scheduling algorithm.
 
+
+## Architecture
+![image](https://github.com/user-attachments/assets/969cd59a-c4df-407e-938b-fe582ef0f8f9)
+
+
+
 ## Features
 
 - **Optimized Scheduling**: Uses an evolutionary algorithm to create efficient work schedules.
