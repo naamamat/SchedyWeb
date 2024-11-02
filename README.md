@@ -6,6 +6,12 @@
 
 Schedy is a shift placement system that utilizes an evolutionary algorithm to optimize schedules, enhancing workforce management efficiency. This project features a **React-based frontend**, a **Node.js and MongoDB backend**, and integrates **Python** for the scheduling algorithm.
 
+
+## Architecture
+![image](https://github.com/user-attachments/assets/969cd59a-c4df-407e-938b-fe582ef0f8f9)
+
+
+
 ## Features
 
 - **Optimized Scheduling**: Uses an evolutionary algorithm to create efficient work schedules.
@@ -33,8 +39,8 @@ Ensure you have the following installed on your system:
 ### Cloning the Repository
 
 ```bash
-git clone https://github.com/your-username/Schedy.git
-cd Schedy
+git clone https://github.com/naamamat/SchedyWeb.git
+cd SchedyWeb
 ```
 
 ### Running the Client and Server
@@ -47,10 +53,10 @@ npm install
 npm start
 ```
 
-Navigate to the **client** directory and install the required dependencies:
+Navigate to the client - **react_schedy** directory and install the required dependencies:
 
 ```bash
-cd client
+cd react_schedy
 npm install
 npm start
 ```
