@@ -142,6 +142,7 @@
 
 
 
+import { useNavigate } from "react-router-dom";
 
 
 
@@ -157,8 +158,10 @@ import { useUserContext } from "../../context/UserProvider";
 
 async function getWorkers(orgId) {
   try {
-
     const response = await axiosInstance.get(`/${orgId}/workers`);
+
+    if(response==null)
+      return null;
     console.log("workers before processing:", response);
     const workers = response.data?.workers;
     console.log("workers after processing:", workers);
@@ -250,6 +253,7 @@ function WorkersList() {
   const [error, setError] = useState(false);
   const [workers, setWorkers] = useState({ workers: [] });
   const [filterFullName, setFilterFullName] = useState(''); // Add state for filtering
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchWorkers = async () => {
@@ -257,7 +261,9 @@ function WorkersList() {
         const workersData = await getWorkers(user.orgId);
         setWorkers(workersData); // Set workers data to state
       } catch (err) {
-        setError(true);
+        navigate('/homePage');
+        alert("You could not watch this page");
+        // setError(true);
       }
     };
     fetchWorkers();

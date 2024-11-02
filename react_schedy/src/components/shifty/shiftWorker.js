@@ -11,13 +11,7 @@ import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas'; // Import html2canvas
 import { useUserContext } from "../../context/UserProvider";
 import { useParams } from 'react-router-dom';
-
-
-
 import { useLocation } from 'react-router-dom';
-
-
-
 
 
 // Group schedule data by time and skill
@@ -272,9 +266,6 @@ const generateP = async () => {
     // Add additional pages if the content exceeds one page
     while (heightLeft > 0) {
       pdf.addPage(); // Create a new page
-      // pdf.text("hi, "+ {fullName } + " this is your shift to week  "+{`${format(startOfTheWeek, 'dd MMM')} - ${format(endOfTheWeek, 'dd MMM')}`} +" happy. ", 10, 20); // Add header text to each page
-      // pdf.text(`Hi, ${fullName}, this is your shift for the week ${format(startOfTheWeek, 'dd MMM')} - ${format(endOfTheWeek, 'dd MMM')}. Happy scheduling!`, 10, 20);
-
       
       position = heightLeft - imgHeight + 30; // Maintain the header space
       pdf.addImage(imgData, 'PNG', 10, position, imgWidth, imgHeight);
@@ -297,10 +288,7 @@ const generateP = async () => {
     setLoading(true)
 
     e.preventDefault();
-    console.log("BEFORE")
-
     const pdfBase64 = await generatePDF(); // Generate the PDF and get its base64 string
-    console.log("AFTER")
     const emailData = {
       pdfBase64,
       toEmail: email, 
@@ -308,14 +296,11 @@ const generateP = async () => {
     };
 
     try {
-      console.log("TRY")
+
       const response = await axiosInstance.post('/sendEmail', emailData); // Directly send emailData
-      console.log('Mail sent to server:', response.data);
-      console.log("RETURN")
       setLoading(false)
       alert("Email sent successfully! :)")
     } catch (error) {
-      console.log("CATCH")
       console.log('Error sending email to server:', error);
       alert("Error sending email :(")
       setLoading(false)
@@ -364,21 +349,15 @@ const generateP = async () => {
 
           <div className="filter-section">
             <form ref={form} onSubmit={sendEmail}>
-              {/* <div>
-        <label>Name</label>
-        <input type="text" name="user_name" />
-              </div> */}
               <div className="longText">
         <label>Mail To: </label>
         <input type="email"  name="user_email" placeholder={fullName + "@gmail.com"}  onChange={(e)=> setEmail(e.target.value)} value={email}/>
               </div>
               <div className="longText">
         <label>Message: </label>
-        {/* <textarea name="message" placeholder={"hi" +fullName+" this is your shifts"}/> */}
         <input type="message"  name="message" placeholder={"hi " +fullName+", good week! "} onChange={(e)=> setMessage(e.target.value)} value={message}/>
               </div>
               <div className="input-button">
-              {/* <button class="submit-button" onClick={onSubmitFiles} disabled={loading}>{loading  ? "Uploading..." : "Submit files"}</button> */}
 
         <input type="submit" disabled={loading} value={loading  ? "Uploading..." : "Send📨"} />
               </div>

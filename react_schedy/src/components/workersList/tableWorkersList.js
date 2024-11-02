@@ -1,209 +1,5 @@
 
 
-// import React, { useState } from 'react';
-// import User from '../../pic/userRed.png'; // Placeholder image
-
-// function TableWorkersList({ workers, setWorkers }) {
-//   const [editingIndex, setEditingIndex] = useState(null); // Track which row is being edited
-//   const [editingWorker, setEditingWorker] = useState(null); // Track edited worker data
-//   const [addingWorker, setAddingWorker] = useState(false); // Track if adding a new worker
-//   const [newWorker, setNewWorker] = useState({
-//     id: '',
-//     fullName: '',
-//     skills: ['', '', ''],
-//   }); // State for new worker being added
-
-//   const handleEditClick = (index, worker) => {
-//     setEditingIndex(index); // Set the index of the row being edited
-//     setEditingWorker({ ...worker }); // Copy the worker data for editing
-//   };
-
-//   const handleSaveClick = () => {
-//     // Update the workers state with the edited worker
-//     const updatedWorkers = workers.workers.map((worker, index) =>
-//       index === editingIndex ? editingWorker : worker
-//     );
-//     setWorkers({ ...workers, workers: updatedWorkers });
-//     setEditingIndex(null); // Stop editing mode
-//   };
-
-//   const handleInputChange = (e, field) => {
-//     setEditingWorker({
-//       ...editingWorker,
-//       [field]: e.target.value,
-//     });
-//   };
-
-//   const handleSkillChange = (e, index) => {
-//     const updatedSkills = [...editingWorker.skills];
-//     updatedSkills[index] = e.target.value;
-//     setEditingWorker({
-//       ...editingWorker,
-//       skills: updatedSkills,
-//     });
-//   };
-
-//   const handleAddWorkerClick = () => {
-//     setAddingWorker(true);
-//   };
-
-//   const handleNewWorkerChange = (e, field) => {
-//     if (field === 'skills') {
-//       const updatedSkills = [...newWorker.skills];
-//       updatedSkills[e.target.name] = e.target.value;
-//       setNewWorker({ ...newWorker, skills: updatedSkills });
-//     } else {
-//       setNewWorker({ ...newWorker, [field]: e.target.value });
-//     }
-//   };
-
-//   const handleSaveNewWorker = () => {
-//     setWorkers({ ...workers, workers: [...workers.workers, newWorker] });
-//     setNewWorker({
-//       id: '',
-//       fullName: '',
-//       skills: ['', '', ''],
-//     }); // Reset the new worker fields
-//     setAddingWorker(false); // Stop adding mode
-//   };
-
-//   return (
-//     <table className="table">
-//       <thead>
-//         <tr>
-//           <th className="td-shift">Picture</th>
-//           <th className="td-shift">ID</th>
-//           <th className="td-shift">Full Name</th>
-//           <th className="td-shift">Skill 1</th>
-//           <th className="td-shift">Skill 2</th>
-//           <th className="td-shift">Skill 3</th>
-//           <th className="td-shift">Options</th>
-//         </tr>
-//       </thead>
-//       <tbody>
-//         {workers?.workers?.map((worker, index) => (
-//           <tr key={index}>
-//             <td className="td-shift">
-//               <img src={worker.pictureUrl || User} alt="Worker" className="img-WorkerList" />
-//             </td>
-//             <td className="td-shift">{worker.id}</td>
-
-//             {/* Full Name */}
-//             <td className="td-shift">
-//               {editingIndex === index ? (
-//                 <input
-//                   type="text"
-//                   value={editingWorker?.fullName || ''}
-//                   onChange={(e) => handleInputChange(e, 'fullName')}
-//                 />
-//               ) : (
-//                 worker.fullName
-//               )}
-//             </td>
-
-//             {/* Skills */}
-//             {worker.skills.map((skill, skillIndex) => (
-//               <td className="td-shift" key={skillIndex}>
-//                 {editingIndex === index ? (
-//                   <input
-//                     type="text"
-//                     value={editingWorker?.skills[skillIndex] || ''}
-//                     onChange={(e) => handleSkillChange(e, skillIndex)}
-//                   />
-//                 ) : (
-//                   skill || 'N/A'
-//                 )}
-//               </td>
-//             ))}
-
-//             {/* Options */}
-//             <td className="td-shift">
-//               {editingIndex === index ? (
-//                 <button className="submit-button save" onClick={handleSaveClick}>
-//                   Save
-//                 </button>
-//               ) : (
-//                 <button className="submit-button save" onClick={() => handleEditClick(index, worker)}>
-//                   Edit
-//                 </button>
-//               )}
-//               <button className="submit-button save">Shifts</button>
-//             </td>
-//           </tr>
-//         ))}
-
-//         {/* Add New Worker Row */}
-//         {addingWorker ? (
-//           <tr>
-//             <td className="td-shift">
-//               <img src={User} alt="Worker" className="img-WorkerList" />
-//             </td>
-//             <td className="td-shift">
-//               <input
-//                 type="text"
-//                 value={newWorker.id}
-//                 onChange={(e) => handleNewWorkerChange(e, 'id')}
-//                 placeholder="ID"
-//               />
-//             </td>
-//             <td className="td-shift">
-//               <input
-//                 type="text"
-//                 value={newWorker.fullName}
-//                 onChange={(e) => handleNewWorkerChange(e, 'fullName')}
-//                 placeholder="Full Name"
-//               />
-//             </td>
-//             <td className="td-shift">
-//               <input
-//                 type="text"
-//                 name="0"
-//                 value={newWorker.skills[0]}
-//                 onChange={(e) => handleNewWorkerChange(e, 'skills')}
-//                 placeholder="Skill 1"
-//               />
-//             </td>
-//             <td className="td-shift">
-//               <input
-//                 type="text"
-//                 name="1"
-//                 value={newWorker.skills[1]}
-//                 onChange={(e) => handleNewWorkerChange(e, 'skills')}
-//                 placeholder="Skill 2"
-//               />
-//             </td>
-//             <td className="td-shift">
-//               <input
-//                 type="text"
-//                 name="2"
-//                 value={newWorker.skills[2]}
-//                 onChange={(e) => handleNewWorkerChange(e, 'skills')}
-//                 placeholder="Skill 3"
-//               />
-//             </td>
-//             <td className="td-shift">
-//               <button className="submit-button save" onClick={handleSaveNewWorker}>
-//                 Save
-//               </button>
-//             </td>
-//           </tr>
-//         ) : (
-//           <tr>
-//             <td colSpan="7" className="td-shift">
-//               <button className="submit-button save" onClick={handleAddWorkerClick}>
-//                 +
-//               </button>
-//             </td>
-//           </tr>
-//         )}
-//       </tbody>
-//     </table>
-//   );
-// }
-
-// export default TableWorkersList;
-
-
 import React, { useState } from 'react';
 import User from '../../pic/userRed.png'; // Placeholder image
 import axiosInstance from "../../context/axios";
@@ -212,11 +8,10 @@ import Pic from '../../context/workerPic.js'
 import '../../styles/workersList.css';
 import { useNavigate } from "react-router-dom";
 
+
+
 function TableWorkersList({ workers, setWorkers, filterFullName }) {
-  // Filter workers based on fullName
-  const filteredWorkers = workers.workers.filter(worker =>
-    worker.fullName.toLowerCase().includes(filterFullName.toLowerCase())
-  );
+
   const { user } = useUserContext();
   const navigate = useNavigate();
   const [editingIndex, setEditingIndex] = useState(null); // Track which row is being edited
@@ -227,6 +22,14 @@ function TableWorkersList({ workers, setWorkers, filterFullName }) {
     fullName: '',
     skills: ['', '', ''],
   }); // State for new worker being added
+
+  // Filter workers based on fullName
+  if (workers == null)
+    return null;
+    const filteredWorkers = workers.workers.filter(worker =>
+    worker.fullName.toLowerCase().includes(filterFullName.toLowerCase())
+  );
+
 
   const handleEditClick = (index, worker) => {
     setEditingIndex(index); // Set the index of the row being edited

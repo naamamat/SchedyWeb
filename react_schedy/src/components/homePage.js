@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import Navbar from './navbar';
-import ProfilePicUploader from '../pic/profile.png';
 import Logo from '../pic/logo-color.png';
 import Home from '../pic/home.png';
 import Shift from '../pic/routine.png';
@@ -29,7 +28,6 @@ const HomePage = () => {
             <Paragraph text="Managing work schedules has never been easier! With Schedy's Life, you can quickly and efficiently create shifts for your team. Simply input your workers' details and shift preferences, and let our advanced algorithm handle the rest.
                         Wondering how it works? Our unique scheduling algorithm ensures that shifts are distributed fairly and efficiently, 
                         tailored to meet your needs."/>
-                        {/* Ready to simplify your scheduling? Get started  */}
             <SpecialPara special="TODAY!" noSpecial="Ready to simplify your scheduling? Get started "/>
 
                         
@@ -53,7 +51,6 @@ const HomePage = () => {
                     <div className="cardHome">
                         <div className="card-content">
                             <img src={Shift} alt="Watch Profile" className="card-img"/>
-                            {/* <img src="images/laptop 3.png" alt="" class="card-img"> */}
                             <h1 className="card-title">Shift Page</h1>
                             <div className="card-body">
                                 <p className="card-exp">You can see your shifts and edit them.</p>
@@ -67,7 +64,6 @@ const HomePage = () => {
                     </div>
                     <div className="cardHome">
                         <div className="card-content">
-                            {/* <img src="images/ipad.png" alt="" class="card-img"> */}
                             <img src={User} alt="Watch Profile" className="card-img"/>
                             <h1 className="card-title">My Profile</h1>
                             <div className="card-body">
@@ -82,7 +78,6 @@ const HomePage = () => {
                     </div>
                     <div className="cardHome">
                         <div className="card-content">
-                            {/* <img src="images/Apple-iPhone-12-Pro.png" alt="" class="card-img"> */}
                             <img src={Upload} alt="Watch Profile" className="card-img"/>
                             <h1 className="card-title">Upload Files</h1>
                             <div className="card-body">

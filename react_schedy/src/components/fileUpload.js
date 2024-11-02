@@ -1,16 +1,13 @@
 import React, { useState } from "react";
 import Papa from 'papaparse';
 import '../styles/uploadfiles.css';
-import myImage from '../pic/upload.png';
 import myUpload from '../pic/upload-file.png';
 import myDocument from '../pic/document.png';
 import Navbar from "./navbar";
 import DownloadButtons from './downloadButtons';
-import { SERVER_URL } from "../consts";
 import { useNavigate } from "react-router-dom";
 import axiosInstance from "../context/axios";
 import Header from './header';
-import Paragraph from "./paragraph";
 import { useUserContext } from "../context/UserProvider";
 
 function FileUpload() {
@@ -26,24 +23,6 @@ function FileUpload() {
     const [shiftFileUploaded, setShiftFileUploaded] = useState(false);
     const [WorkersFileUploaded, setWorkersFileUploaded] = useState(false);
 
-
-
-
-    // function handleFile(event, type) {
-    //     const file = event.target.files[0];
-    //     Papa.parse(file, {
-    //         header: true,
-    //         skipEmptyLines: true,
-    //         complete: (results) => {
-    //             console.log('Parsed CSV:', results.data);
-    //             if (type === 'worker')setWorkerFile(results.data)
-    //             if (type === 'shift') setShiftFile(results.data)
-    //           },
-    //           error: (error) => {
-    //             console.error('Error parsing CSV:', error);
-    //           }
-    //     })
-    // }
 
 
     function handleFile(event, type) {

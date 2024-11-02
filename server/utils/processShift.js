@@ -13,7 +13,7 @@ const daysToNumbers = {
 
 function runPythonScript(workers, shifts) {
     return new Promise((resolve, reject) => {
-        const childPython = spawn('python', ['../algorithem/genetic_algorithem_list.py']);
+        const childPython = spawn('python', ['../algorithm/genetic_algorithem_list.py']);
 
         let output = '';
         let error = '';

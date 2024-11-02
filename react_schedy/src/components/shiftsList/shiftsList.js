@@ -1,145 +1,3 @@
-// import React, { useEffect, useState } from "react";
-// import '../../styles/styleShift.css';
-// import TableShiftsList from './tableShiftsList'; // Assuming you have a component for displaying shifts
-// import Navbar from '../navbar';
-// import Header from '../header';
-// import axiosInstance from "../../context/axios";
-// import { useUserContext } from "../../context/UserProvider";
-// import { useNavigate } from "react-router-dom";
-
-// // Fetching shifts from the server
-// async function getShifts(orgId) {
-//   try {
-//     const response = await axiosInstance.get(`/${orgId}/shifts`);
-//     console.log("shifts before processing:", response);
-//     const shifts = response.data?.shifts;
-//     console.log("shifts after processing:", shifts.shifts);
-
-//     return shifts;
-//   } catch (error) {
-//     console.log("Error fetching shifts:", error);
-//     return null;
-//   }
-// }
-
-
-// // Main ShiftsList component
-// function ShiftsList() {
-//   const navigate = useNavigate();
-//   const { user } = useUserContext();
-//   const [error, setError] = useState(false);
-//   const [shifts, setShifts] = useState({ shifts: [] }); // State initialized with shifts
-
-//   // Handling some additional processing (optional)
-//   async function handleProcessAgain(){
-//     try {
-//       await axiosInstance.get(`/${user.orgId}/generateNewScheduleAfterChanges`);
-//       console.log("Process shifts again");
-//       alert("Created new shifts successfully");
-//       navigate("/shift");
-//     }  catch (e) {
-//       console.log("Error processing shifts again:", e);
-//       alert("Error processing shifts again");
-//     }
-//   }
-
-//   useEffect(() => {
-//     const fetchShifts = async () => {
-//       try {
-//         const shiftsData = await getShifts(user.orgId); // Fetch the shifts data
-//         setShifts(shiftsData); // Set shifts data to state
-//       } catch (err) {
-//         setError(true); // Handle errors
-//       }
-//     };
-//     fetchShifts();
-//   }, []);
-
-//   return (
-//     <div className="container">
-//       <Navbar />
-
-//       <section className="main">
-//         <Header text="My Shifts" />
-
-//         <div className="buttons-s">
-
-
-//           <div className="filter-section">
-
-//             <div>
-//               <label>Skill: </label>
-//               <input
-//                 list="position-list"
-//                 // value={selectedPosition}
-//                 // onChange={handlePositionFilterChange}
-//               />
-//               {/* <datalist id="position-list">
-//                 {availablePositions.map((position, index) => (
-//                   <option key={index} value={position} />
-//                 ))}
-//               </datalist> */}
-//             </div>
-
-//             <div>
-//               <label>Sort by Shift Time: </label>
-//               <button 
-//               // onClick={() => handleSortOrderChange("asc")}
-//               >☝️</button>
-//               <button 
-//               // onClick={() => handleSortOrderChange("desc")}
-//               >👇</button>
-//             </div>
-
-//             <div>
-//               <label>Sort by Cost: </label>
-//               <button 
-//               // onClick={() => handleSortOrderChange("asc")}
-//               >☝️</button>
-//               <button 
-//               // onClick={() => handleSortOrderChange("desc")}
-//               >👇</button>
-//             </div>
-
-//             <div>
-//             <label>Day: </label>
-//               <input/>
-//             {/* //     list="position-list"
-//             // <select id="day" value={editingShift?.day || ''} onChange={(e) => handleInputChange(e, 'day')}>
-//             //       <option value="" disabled>
-//             //         -- Select a day --
-//             //       </option>
-//             //       {daysOfWeek.map((day) => (
-//             //         <option key={day} value={day}>
-//             //           {day}
-//             //         </option>
-//             //       ))}
-//             //     </select> */}
-//             </div>
-//           </div>
-//         </div>
-
-
-//         <button className="submit-button save" onClick={() => handleProcessAgain()}>
-//           Process Again
-//         </button>
-//         <section className="attendance">
-//           <div className="shiftsList">
-//             {error ? (
-//               <p>Error while fetching data. Please try again later...</p>
-//             ) : (
-//               <TableShiftsList shifts={shifts} setShifts={setShifts} /> // Adjust component to display shifts
-//             )}
-//           </div>
-//         </section>
-//       </section>
-
-//     </div>
-//   );
-// }
-
-// export default ShiftsList;
-
 
 
 import React, { useEffect, useState } from "react";
@@ -163,32 +21,39 @@ async function getShifts(orgId) {
   }
 }
 
+
+
+
 function ShiftsList() {
   const navigate = useNavigate();
   const { user } = useUserContext();
   const [error, setError] = useState(false);
-  const [shifts, setShifts] = useState({ shifts: [] });
-  const [filteredShifts, setFilteredShifts] = useState([]); // For filtered/sorted shifts
-  const [selectedSkill, setSelectedSkill] = useState(''); // Track selected skill for filtering
-  const [selectedDay, setSelectedDay] = useState(''); // Track selected day for filtering
-  const [sortOption, setSortOption] = useState({ sortBy: null, order: 'asc' }); // Sort state
+  const [shifts, setShifts] = useState({ shifts: [] }); // Initialize as an object with an empty array
+  const [filteredShifts, setFilteredShifts] = useState([]); 
+  const [selectedSkill, setSelectedSkill] = useState(''); 
+  const [selectedDay, setSelectedDay] = useState(''); 
+  const [sortOption, setSortOption] = useState({ sortBy: null, order: 'asc' });
 
   useEffect(() => {
     const fetchShifts = async () => {
       try {
         const shiftsData = await getShifts(user.orgId);
-        setShifts(shiftsData);
-        setFilteredShifts(shiftsData.shifts);
+        if (shiftsData && shiftsData.shifts) {
+          setShifts(shiftsData); // Ensure shiftsData is properly set
+          setFilteredShifts(shiftsData.shifts); // Initialize filtered shifts
+        } else {
+          setShifts({ shifts: [] }); // Set to an empty array if no data
+        }
       } catch (err) {
         setError(true);
       }
     };
     fetchShifts();
-  }, []);
+  }, [user.orgId]);
 
   // Filter shifts based on skill and day
   const applyFilters = () => {
-    let filtered = shifts.shifts;
+    let filtered = shifts?.shifts || []; // Use optional chaining to avoid null errors
     if (selectedSkill) {
       filtered = filtered.filter(shift => shift.skill === selectedSkill);
     }
@@ -198,7 +63,6 @@ function ShiftsList() {
     setFilteredShifts(filtered);
   };
 
-  // Sort by start time or cost per worker
   const applySort = (sortBy, order) => {
     const sortedShifts = [...filteredShifts].sort((a, b) => {
       if (sortBy === 'start_hour' || sortBy === 'cost_per_worker') {
@@ -222,36 +86,15 @@ function ShiftsList() {
     }
   }, [sortOption]);
 
-
-
-
-  // Handling some additional processing (optional)
-  async function handleProcessAgain(){
+  async function handleProcessAgain() {
     try {
       await axiosInstance.get(`/${user.orgId}/generateNewScheduleAfterChanges`);
-      console.log("Process shifts again");
       alert("Created new shifts successfully");
       navigate("/shift");
-    }  catch (e) {
-      console.log("Error processing shifts again:", e);
+    } catch (e) {
       alert("Error processing shifts again");
     }
   }
-
-  useEffect(() => {
-    const fetchShifts = async () => {
-      try {
-        const shiftsData = await getShifts(user.orgId); // Fetch the shifts data
-        setShifts(shiftsData); // Set shifts data to state
-      } catch (err) {
-        setError(true); // Handle errors
-      }
-    };
-    fetchShifts();
-  }, []);
-
-
-
 
   return (
     <div className="container">
@@ -270,7 +113,7 @@ function ShiftsList() {
                 onChange={(e) => setSelectedSkill(e.target.value)}
               />
               <datalist id="position-list">
-                {[...new Set(shifts.shifts.map(shift => shift.skill))].map((skill, index) => (
+                {[...new Set(shifts?.shifts?.map(shift => shift.skill))].map((skill, index) => (
                   <option key={index} value={skill} />
                 ))}
               </datalist>
@@ -305,16 +148,12 @@ function ShiftsList() {
 
           <div className="filter-section">
             <div>
-              <button onClick={() => handleProcessAgain()}>Process Again</button>
+          <button onClick={() => handleProcessAgain()}>Process Again</button>
+
             </div>
+
           </div>
-
-        {/* <button className="submit-button save" onClick={() => handleProcessAgain()}>
-          Process Again
-        </button> */}
-
         </div>
-
 
         <section className="attendance">
           <div className="shiftsList">

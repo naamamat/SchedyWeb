@@ -27,13 +27,23 @@ function TableShiftsList({ shifts, setShifts }) {
   const handleSaveClick = async () => {
     console.log("save click")
 
-    // Update the shifts state with the edited shift
+
+
+  // Filter workers based on fullName
+  if (shifts == null)
+    return null;
     const updatedShifts = shifts.shifts.map((shift, index) =>
       index === editingIndex ? editingShift : shift
     );
 
+
+    // Update the shifts state with the edited shift
+
+
     // API calls to update shift data on the server
     try {
+      if (shifts == null)
+        return null;
       if (editingShift?.day !== shifts.shifts[editingIndex]?.day) {
         const change = await changeDate(editingShift.day, editingIndex);
       }
@@ -67,7 +77,6 @@ function TableShiftsList({ shifts, setShifts }) {
       console.log("change name ")
       const response = await axiosInstance.post(`/${user.orgId}/changeShiftDate`, { newDate, index });
       console.log("response", response)
-      //const response = await axiosInstance.post(`/${user.orgId}/changeShiftDate`, { newDate, index });
       console.log("Date changed:", response.data);
       return response.data;
     } catch (error) {
